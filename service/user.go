@@ -1,4 +1,4 @@
-package store
+package service
 
 import (
 	"github.com/ScienceQuiz-Backend/model"
