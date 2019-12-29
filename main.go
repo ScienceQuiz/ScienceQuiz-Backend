@@ -4,7 +4,7 @@ package main
 import (
 	"github.com/ScienceQuiz-Backend/db"
 	"github.com/ScienceQuiz-Backend/handler"
-	"github.com/ScienceQuiz-Backend/route"
+	"github.com/ScienceQuiz-Backend/router"
 	"github.com/ScienceQuiz-Backend/service"
 )
 
@@ -12,7 +12,10 @@ func main() {
 	r := route.New()
 	v1 := r.Group("api")
 
-	d := db.New()
+	d, err := db.New()
+	if err == nil {
+		defer d.Close()
+	}
 	db.AutoMigrate(d)
 
 	u := service.NewUserService(d)
