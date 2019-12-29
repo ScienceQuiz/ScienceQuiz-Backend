@@ -15,6 +15,7 @@ func New() (*gorm.DB, error) {
 		return nil, err
 	}
 
+	CreateTable(db)
 	return db, nil
 }
 
@@ -22,4 +23,10 @@ func AutoMigrate(db *gorm.DB) {
 	db.AutoMigrate(
 		&model.User{},
 	)
+}
+
+func CreateTable(db *gorm.DB) {
+	if !db.HasTable(&model.User{}) {
+		db.CreateTable(&model.User{})
+	}
 }
