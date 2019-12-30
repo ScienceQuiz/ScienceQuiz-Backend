@@ -9,4 +9,5 @@ type User struct {
 	UserId   string `gorm:"unique;not null"`
 	UserPw   string `gorm:"not null"`
 	Nickname string `gorm:"not null"`
+	School	 string `gorm:"not null"`
 }
