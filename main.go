@@ -22,5 +22,5 @@ func main() {
 	h := handler.NewHandler(u)
 
 	h.Register(v1)
-	r.Logger.Fatal(r.Start(":8080"))
+	r.Logger.Fatal(r.Start(":8000"))
 }
