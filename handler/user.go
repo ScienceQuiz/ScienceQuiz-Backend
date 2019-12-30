@@ -14,7 +14,7 @@ func(h *Handler) SignUp(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest)
 	}
 
-	if h.userService.CheckUserExist(&u) == true {
+	if h.userService.CheckUserExist(u.UserId) == true {
 		return echo.NewHTTPError(470, "해당 id의 사용자가 이미 존재합니다.")
 	}
 
