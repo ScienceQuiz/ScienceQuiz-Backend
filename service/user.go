@@ -19,8 +19,9 @@ func (us *UserService) Create(u *model.User) {
 	us.db.Create(u)
 }
 
-func (us *UserService) CheckUserExist(u *model.User) bool {
-	if us.db.Where("user_id = ?", u.UserId).Find(&u).RowsAffected != 0 {
+func (us *UserService) CheckUserExist(s string) bool {
+	u := new(model.User)
+	if us.db.Where("user_id = ?", s).Find(&u).RowsAffected != 0 {
 		return true
 	}
 	return false
