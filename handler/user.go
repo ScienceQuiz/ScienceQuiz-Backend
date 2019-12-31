@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/ScienceQuiz-Backend/model"
+	"github.com/ScienceQuiz-Backend/utils"
 	"github.com/labstack/echo"
 	"net/http"
 )
@@ -37,4 +38,13 @@ func(h *Handler) Login(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, newJwtResponse(u.ID))
+}
+
+func(h *Handler) MyInform(c echo.Context) error {
+	t := c.Request().Header.Get("Authorization")
+
+	pk := utils.DecodeJWT(t)
+	u := h.userService.GetUserByPk(pk)
+
+	return c.JSON(http.StatusOK, newInformResponse(u.Nickname))
 }
