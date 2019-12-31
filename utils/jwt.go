@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+type CustomClaims map[string]interface{}
+
+func (cc CustomClaims) Valid() error {
+	return jwt.MapClaims(cc).Valid()
+}
+
 var JWTSecret = []byte("SECRET_KEY")
 
 func GenerateJWT(id uint) string {
