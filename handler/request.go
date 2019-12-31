@@ -28,3 +28,9 @@ func (r *userSignUpRequest) bind(c echo.Context, u *model.User) error {
 	
 	return nil
 }
+
+type userLoginRequest struct {
+	UserId string `json:"userId" validate:"required"`
+	UserPw string `json:"userPw" validate:"required"`
+}
+
