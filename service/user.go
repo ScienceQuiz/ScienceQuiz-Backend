@@ -41,3 +41,11 @@ func (us *UserService) CheckPwCorrect(s1 string, s2 string) bool {
 	}
 	return false
 }
+
+func (us *UserService) GetUserByPk(pk uint) *model.User {
+	u := new(model.User)
+	if us.db.Where("id = ?", pk).Find(&u).RowsAffected == 0 {
+		return nil
+	}
+	return u
+}
