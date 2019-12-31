@@ -10,5 +10,5 @@ func (h *Handler) Register(v1 *echo.Group) {
 	guestUser.POST("/login", h.Login)
 
 	user := v1.Group("/users")
-	user.POST("/my", h.MyInform)
+	user.GET("/my", h.MyInform)
 }
