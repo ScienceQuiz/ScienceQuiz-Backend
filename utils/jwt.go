@@ -23,3 +23,10 @@ func GenerateJWT(id uint) string {
 	t, _ := token.SignedString(JWTSecret)
 	return t
 }
+
+func DecodeJWT(token string) uint {
+	t, _ := jwt.ParseWithClaims(token, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return JWTSecret, nil
+	})
+	return uint((*t.Claims.(*CustomClaims))["id"].(float64))
+}
