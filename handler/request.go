@@ -34,3 +34,12 @@ type userLoginRequest struct {
 	UserPw string `json:"userPw" validate:"required"`
 }
 
+func (r *userLoginRequest) bind(c echo.Context) error {
+	if err := c.Bind(r); err != nil {
+		return err
+	}
+	if err := c.Validate(r); err != nil {
+		return err
+	}
+	return nil
+}
