@@ -12,3 +12,14 @@ func newJwtResponse(id uint) *jwtResponse {
 	r.AccessToken = utils.GenerateJWT(id)
 	return r
 }
+
+type myInformResponse struct {
+	Nickname string `json:"nickname"`
+}
+
+func newInformResponse(s string) *myInformResponse {
+	r := new(myInformResponse)
+
+	r.Nickname = s
+	return r
+}
