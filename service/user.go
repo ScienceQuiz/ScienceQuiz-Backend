@@ -26,3 +26,11 @@ func (us *UserService) CheckUserExist(s string) bool {
 	}
 	return false
 }
+
+func (us *UserService) GetUserById(s string) *model.User {
+	u := new(model.User)
+	if us.db.Where("user_id = ?", s).Find(&u).RowsAffected == 0 {
+		return nil
+	}
+	return u
+}
