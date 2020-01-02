@@ -52,3 +52,21 @@ type quizRegisterRequest struct {
 	Answer4 	string `json:"answer_4" validate:"required"`
 	Key			int    `json:"key"`
 }
+
+func (r *quizRegisterRequest) bind(c echo.Context, q *model.Quiz) error {
+	if err := c.Bind(r); err != nil {
+		return err
+	}
+	if err := c.Validate(r); err != nil {
+		return err
+	}
+
+	q.Question = r.Question
+	q.Answer1 = r.Answer1
+	q.Answer2 = r.Answer2
+	q.Answer3 = r.Answer3
+	q.Answer4 = r.Answer4
+	q.Key = r.Key
+
+	return nil
+}
