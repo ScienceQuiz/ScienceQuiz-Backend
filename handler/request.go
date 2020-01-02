@@ -43,3 +43,12 @@ func (r *userLoginRequest) bind(c echo.Context) error {
 	}
 	return nil
 }
+
+type quizRegisterRequest struct {
+	Question 	string `json:"question" validate:"required"`
+	Answer1 	string `json:"answer_1" validate:"required"`
+	Answer2 	string `json:"answer_2" validate:"required"`
+	Answer3 	string `json:"answer_3" validate:"required"`
+	Answer4 	string `json:"answer_4" validate:"required"`
+	Key			int    `json:"key"`
+}
