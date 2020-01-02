@@ -19,7 +19,8 @@ func main() {
 	db.AutoMigrate(d)
 
 	u := service.NewUserService(d)
-	h := handler.NewHandler(u)
+	q := service.NewQuizService(d)
+	h := handler.NewHandler(u, q)
 
 	h.Register(v1)
 	r.Logger.Fatal(r.Start(":8000"))
