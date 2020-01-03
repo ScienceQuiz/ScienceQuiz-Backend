@@ -22,11 +22,15 @@ func New() (*gorm.DB, error) {
 func AutoMigrate(db *gorm.DB) {
 	db.AutoMigrate(
 		&model.User{},
+		&model.Quiz{},
 	)
 }
 
 func CreateTable(db *gorm.DB) {
 	if !db.HasTable(&model.User{}) {
 		db.CreateTable(&model.User{})
+	}
+	if !db.HasTable(&model.Quiz{}) {
+		db.CreateTable(&model.Quiz{})
 	}
 }
