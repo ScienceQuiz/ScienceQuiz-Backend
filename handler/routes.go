@@ -11,4 +11,7 @@ func (h *Handler) Register(v1 *echo.Group) {
 
 	user := v1.Group("/users")
 	user.GET("/my", h.MyInform)
+
+	quiz := v1.Group("/quiz")
+	quiz.POST("", h.QuizRegister)
 }
