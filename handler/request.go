@@ -50,7 +50,7 @@ type quizRegisterRequest struct {
 	Answer2 	string `json:"answer_2" validate:"required"`
 	Answer3 	string `json:"answer_3" validate:"required"`
 	Answer4 	string `json:"answer_4" validate:"required"`
-	Key			int    `json:"key"`
+	Key			int    `json:"key" validate:"required"`
 }
 
 func (r *quizRegisterRequest) bind(c echo.Context, q *model.Quiz) error {
