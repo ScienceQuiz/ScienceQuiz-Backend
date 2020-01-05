@@ -6,6 +6,28 @@ import (
 	"net/http"
 )
 
+type quizIndex struct {
+	ID			uint
+	Question 	string
+	Answer1 	string
+	Answer2 	string
+	Answer3 	string
+	Answer4 	string
+	Key			int
+}
+
+func quizFilter(q *model.Quiz) *quizIndex {
+	return &quizIndex{
+		ID:		  q.ID,
+		Question: q.Question,
+		Answer1:  q.Answer1,
+		Answer2:  q.Answer2,
+		Answer3:  q.Answer3,
+		Answer4:  q.Answer4,
+		Key:      q.Key,
+	}
+}
+
 func (h *Handler) QuizRegister(c echo.Context) error {
 	q := new(model.Quiz)
 	req := quizRegisterRequest{}
