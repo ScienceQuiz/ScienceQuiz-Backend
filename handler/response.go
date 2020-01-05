@@ -23,3 +23,14 @@ func newInformResponse(s string) *myInformResponse {
 	r.Nickname = s
 	return r
 }
+
+type quizListResponse struct {
+	Science []quizIndex `json:"science"`
+}
+
+func newQuizListResponse(qList []quizIndex) *quizListResponse {
+	r := new(quizListResponse)
+
+	r.Science = qList
+	return r
+}
