@@ -6,24 +6,28 @@ import (
 	"net/http"
 )
 
+type Answers struct {
+	Answer1 	string	`json:"b1"`
+	Answer2 	string	`json:"b2"`
+	Answer3 	string	`json:"b3"`
+	Answer4 	string	`json:"b4"`
+}
+
 type quizIndex struct {
-	ID			uint
-	Question 	string
-	Answer1 	string
-	Answer2 	string
-	Answer3 	string
-	Answer4 	string
-	Key			int
+	Question 	string	`json:"question"`
+	Answers 	Answers `json:"btns"`
+	Key			int	`json:"key"`
 }
 
 func quizFilter(q *model.Quiz) *quizIndex {
-	return &quizIndex{
-		ID:		  q.ID,
+	return &quizIndex {
 		Question: q.Question,
-		Answer1:  q.Answer1,
-		Answer2:  q.Answer2,
-		Answer3:  q.Answer3,
-		Answer4:  q.Answer4,
+		Answers: Answers{
+			Answer1: q.Answer1,
+			Answer2: q.Answer2,
+			Answer3: q.Answer3,
+			Answer4: q.Answer4,
+		},
 		Key:      q.Key,
 	}
 }
