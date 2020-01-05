@@ -7,7 +7,7 @@ type jwtResponse struct {
 }
 
 func newJwtResponse(id uint) *jwtResponse {
-	r := new(jwtResponse)
+	r := new(jwtResponse) 
 
 	r.AccessToken = utils.GenerateJWT(id)
 	return r
