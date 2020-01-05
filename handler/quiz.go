@@ -46,3 +46,15 @@ func (h *Handler) QuizRegister(c echo.Context) error {
 	h.quizService.Create(q)
 	return c.NoContent(http.StatusOK)
 }
+
+func (h *Handler) GetQuizList(c echo.Context) error {
+	var qList []quizIndex
+
+	for i:=uint(1); i<=10; i++ {
+		q := h.quizService.GetQuizById(i)
+		qIndex := quizFilter(q)
+		qList = append(qList, *qIndex)
+	}
+
+	return c.JSON(http.StatusOK, newQuizListResponse(qList))
+}
