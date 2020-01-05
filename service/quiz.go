@@ -27,3 +27,11 @@ func (qs *QuizService) CheckQuizExist(s string) bool {
 	}
 	return false
 }
+
+func(qs *QuizService) GetQuizById(id uint) *model.Quiz {
+	q := new(model.Quiz)
+
+	qs.db.Where("id = ?", id).Find(&q)
+
+	return q
+}
